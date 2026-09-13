@@ -12,6 +12,13 @@
     <meta name="author" content="Yasar Yousuf" />
     <link rel="canonical" href="https://yasaryousuf.dev/" />
 
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <meta name="theme-color" content="#14171A" />
+
     <meta property="og:type" content="profile" />
     <meta
       property="og:title"
@@ -403,6 +410,27 @@
         gap: 6px 16px;
         margin-bottom: 6px;
       }
+      .role-item .rh-left {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .co-badge {
+        flex: none;
+        width: 34px;
+        height: 34px;
+        border-radius: 7px;
+        background: var(--paper);
+        border: 1.5px solid var(--pine);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--pine);
+        margin-top: 2px;
+      }
       .role-item h3 {
         font-size: 21px;
         font-weight: 600;
@@ -411,6 +439,10 @@
       .role-item .company {
         color: var(--pine);
         font-weight: 500;
+        text-decoration: none;
+      }
+      .role-item .company:hover {
+        text-decoration: underline;
       }
       .role-item .dates {
         font-family: "IBM Plex Mono", monospace;
@@ -422,6 +454,10 @@
         color: var(--ink-soft);
         margin: 0;
         max-width: 62ch;
+      }
+      .role-item .rh-text {
+        flex: 1;
+        min-width: 0;
       }
 
       /* ---- About ---- */
@@ -578,27 +614,34 @@
       }
 
       /* ---- Testimonial ---- */
-      .testimonial {
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+      .testimonial-card {
         background: var(--pine);
         color: var(--cream-text);
         border-radius: 14px;
-        padding: 48px;
+        padding: 34px;
+        display: flex;
+        flex-direction: column;
       }
-      .testimonial p.quote {
-        font-size: clamp(20px, 2.6vw, 27px);
+      .testimonial-card p.quote {
+        font-size: 17px;
         font-weight: 500;
-        line-height: 1.5;
-        margin: 0 0 22px;
-        max-width: 60ch;
+        line-height: 1.55;
+        margin: 0 0 18px;
+        flex: 1;
       }
-      .testimonial .who {
+      .testimonial-card .who {
         font-family: "IBM Plex Mono", monospace;
         font-size: 13px;
         color: #c9e0d6;
       }
-      @media (max-width: 560px) {
-        .testimonial {
-          padding: 30px 24px;
+      @media (max-width: 720px) {
+        .testimonials-grid {
+          grid-template-columns: 1fr;
         }
       }
 
@@ -880,16 +923,21 @@
           <div class="timeline">
             <div class="role-item">
               <div class="rh">
-                <h3>
-                  Web Designer
-                  <a
-                    class="company"
-                    href="https://universalwebdesign.co.uk"
-                    target="_blank"
-                    rel="noopener"
-                    >· Universal Web Design, Colchester</a
-                  >
-                </h3>
+                <div class="rh-left">
+                  <span class="co-badge">UWD</span>
+                  <div class="rh-text">
+                    <h3>
+                      Web Designer
+                      <a
+                        class="company"
+                        href="https://universalwebdesign.co.uk"
+                        target="_blank"
+                        rel="noopener"
+                        >· Universal Web Design, Colchester</a
+                      >
+                    </h3>
+                  </div>
+                </div>
                 <span class="dates mono">Aug 2026 – present</span>
               </div>
               <p>
@@ -900,23 +948,28 @@
             </div>
             <div class="role-item">
               <div class="rh">
-                <h3>
-                  Software Engineer ·
-                  <a
-                    class="company"
-                    href="https://softzino.com"
-                    target="_blank"
-                    rel="noopener"
-                    >Softzino Technologies</a
-                  >
-                  <a
-                    class="company"
-                    href="https://www.apple.com"
-                    target="_blank"
-                    rel="noopener"
-                    >(contract, Apple Inc.)</a
-                  >
-                </h3>
+                <div class="rh-left">
+                  <span class="co-badge">SZ</span>
+                  <div class="rh-text">
+                    <h3>
+                      Senior Software Engineer
+                      <a
+                        class="company"
+                        href="https://softzino.com"
+                        target="_blank"
+                        rel="noopener"
+                        >· Softzino Technologies</a
+                      >
+                      <a
+                        class="company"
+                        href="https://www.apple.com"
+                        target="_blank"
+                        rel="noopener"
+                        >(contract, Apple Inc.)</a
+                      >
+                    </h3>
+                  </div>
+                </div>
                 <span class="dates mono">Mar 2022 – Jan 2024</span>
               </div>
               <p>
@@ -928,30 +981,56 @@
             </div>
             <div class="role-item">
               <div class="rh">
-                <h3>
-                  Freelance Software Engineer ·
-                  <span class="company">Fiverr &amp; direct clients</span>
-                </h3>
+                <div class="rh-left">
+                  <span class="co-badge">FL</span>
+                  <div class="rh-text">
+                    <h3>
+                      Freelance Software Engineer
+                      <span class="company">· Fiverr &amp; direct clients</span>
+                    </h3>
+                  </div>
+                </div>
                 <span class="dates mono">Oct 2021 – present</span>
               </div>
               <p>
                 Delivered Laravel builds, WordPress sites and third-party API
                 integrations internationally, including multilingual recruitment
-                platforms Sixie and CTRL-F for Belgian clients.
+                platforms
+                <a
+                  class="company"
+                  href="https://sixie.be"
+                  target="_blank"
+                  rel="noopener"
+                  >Sixie</a
+                >
+                and
+                <a
+                  class="company"
+                  href="https://ctrl-f.be"
+                  target="_blank"
+                  rel="noopener"
+                  >CTRL-F</a
+                >
+                for Belgian clients.
               </p>
             </div>
             <div class="role-item">
               <div class="rh">
-                <h3>
-                  Software Engineer ·
-                  <a
-                    class="company"
-                    href="https://tikweb.com"
-                    target="_blank"
-                    rel="noopener"
-                    >Tikweb ApS, Aarhus</a
-                  >
-                </h3>
+                <div class="rh-left">
+                  <span class="co-badge">TW</span>
+                  <div class="rh-text">
+                    <h3>
+                      Software Engineer
+                      <a
+                        class="company"
+                        href="https://tikweb.com"
+                        target="_blank"
+                        rel="noopener"
+                        >· Tikweb ApS, Aarhus</a
+                      >
+                    </h3>
+                  </div>
+                </div>
                 <span class="dates mono">Apr 2020 – Feb 2022</span>
               </div>
               <p>
@@ -962,16 +1041,21 @@
             </div>
             <div class="role-item">
               <div class="rh">
-                <h3>
-                  Software Engineer ·
-                  <a
-                    class="company"
-                    href="https://skylarksoft.com"
-                    target="_blank"
-                    rel="noopener"
-                    >Skylark Soft Limited, Dhaka</a
-                  >
-                </h3>
+                <div class="rh-left">
+                  <span class="co-badge">SS</span>
+                  <div class="rh-text">
+                    <h3>
+                      Software Engineer
+                      <a
+                        class="company"
+                        href="https://skylarksoft.com"
+                        target="_blank"
+                        rel="noopener"
+                        >· Skylark Soft Limited, Dhaka</a
+                      >
+                    </h3>
+                  </div>
+                </div>
                 <span class="dates mono">Jan – Mar 2020</span>
               </div>
               <p>
@@ -982,16 +1066,21 @@
             </div>
             <div class="role-item">
               <div class="rh">
-                <h3>
-                  Web Developer ·
-                  <a
-                    class="company"
-                    href="https://opcodespace.com"
-                    target="_blank"
-                    rel="noopener"
-                    >Opcodespace, Dhaka</a
-                  >
-                </h3>
+                <div class="rh-left">
+                  <span class="co-badge">OC</span>
+                  <div class="rh-text">
+                    <h3>
+                      Web Developer
+                      <a
+                        class="company"
+                        href="https://opcodespace.com"
+                        target="_blank"
+                        rel="noopener"
+                        >· Opcodespace, Dhaka</a
+                      >
+                    </h3>
+                  </div>
+                </div>
                 <span class="dates mono">Jan 2018 – Dec 2019</span>
               </div>
               <p>
@@ -1121,15 +1210,49 @@
 
       <section class="block" id="testimonial" style="padding-top: 0">
         <div class="wrap">
-          <div class="testimonial">
-            <p class="quote">
-              "I had an exceptional experience working with yasar on my recent
-              PHP project. From the start, he displayed a deep understanding of
-              PHP and a keen ability to solve complex problems efficiently. He
-              is professional, communicative, and delivered high-quality code
-              that exceeded my expectations."
-            </p>
-            <p class="who">— emanuel</p>
+          <div class="section-head">
+            <h2>What clients say</h2>
+            <span class="tag-r">freelance &amp; contract feedback</span>
+          </div>
+          <div class="testimonials-grid">
+            <div class="testimonial-card">
+              <p class="quote">
+                "I had an exceptional experience working with Yasar on my recent
+                PHP project. From the start, he displayed a deep understanding
+                of PHP and a keen ability to solve complex problems efficiently.
+                He is professional, communicative, and delivered high-quality
+                code that exceeded my expectations."
+              </p>
+              <p class="who">— Emmanuel</p>
+            </div>
+            <div class="testimonial-card">
+              <p class="quote">
+                "Should I have full time work I would hire him instantly. Works
+                meticulously and uses good code to make the projects performant.
+                Thanks."
+              </p>
+              <p class="who">— Matthew</p>
+            </div>
+            <div class="testimonial-card">
+              <p class="quote">
+                "I am very pleased with the outcome and would recommend Yasar to
+                anyone looking to have some custom PHP work done by a
+                professional. Thanks again for another fantastic job. Well
+                done!"
+              </p>
+              <p class="who">— Shanon</p>
+            </div>
+            <div class="testimonial-card">
+              <p class="quote">
+                "Absolutely outstanding. I can't begin to describe how happy I
+                am with this seller's work and professionalism. He is amazingly
+                patient and diligent and made sure everything was exactly as I
+                needed it. Also, his English is perfect and he kept me up to
+                date throughout. He is the best developer I have ever worked
+                with and I can thoroughly recommend Yasar to anyone!"
+              </p>
+              <p class="who">— Client, via Fiverr</p>
+            </div>
           </div>
         </div>
       </section>
